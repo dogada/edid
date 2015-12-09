@@ -1,0 +1,36 @@
+{
+  "name": "edid",
+  "description": "Human and url friendly (e)xtensible (d)istributed (id)s.",
+  "version": "0.1.1",
+  "main": "edid",
+  "scripts": {
+    "test": "mocha",
+    "build": "changelog"
+  },
+  "dependencies": {
+    "bases": "~0.2.1",
+    "big-integer": "^1.6.3",
+    "object-assign": "~4.0.1"
+  },
+  "devDependencies": {},
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dogada/edid.git"
+  },
+  "keywords": [
+    "coect",
+    "id",
+    "database",
+    "shard",
+    "pg"
+  ],
+  "author": "Dmytro V. Dogadailo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dogada/edid/issues"
+  },
+  "homepage": "https://github.com/dogada/edid#readme"
+}
