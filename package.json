@@ -12,7 +12,9 @@
     "big-integer": "^1.6.3",
     "object-assign": "~4.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "~3.4.1"
+  },
   "directories": {
     "test": "test"
   },
