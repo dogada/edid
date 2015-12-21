@@ -62,12 +62,12 @@ describe('default EDID (length of ids is 13, time until 6028 year)', function ()
   })
 
   it('should generate and parse id with shard, time and counter', function(done) {
-    edid.generate({parent: parentId, time: new Date(2015, 1, 1).getTime(), counter: 10}, function(err, id) {
+    edid.generate({parent: parentId, time: new Date('2015-01-01').getTime(), counter: 10}, function(err, id) {
       expect(id).length(13)
       expect(edid.parse(id)).eql({shard: 7,
                                   counter: 10,
-                                  time: 1422741600000,
-                                  source: '1eNdob7D1181B'})
+                                  time: 1420070400000,
+                                  source: '1eJZkzQo1181B'})
       done()
     })
   })
