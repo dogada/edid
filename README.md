@@ -38,6 +38,8 @@ work and you will need to migrate to new format, but our string ids will
 continue to work even when 146 years have elapsed (new ids will not fit into
 64-bit data range however).
 
+Instagram's IDs are generated on database level using PostgreSQL server functions to maintain generators state. EDID can generate IDs on client or app server as well.
+
 Copyright (C) 2015 Dmytro V. Dogadailo
 
 This program is free software; you can redistribute it and/or modify it under
