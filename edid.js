@@ -3,6 +3,7 @@
 var bases = require('bases')
 var bigInt = require('big-integer')
 var objectAssign = require('object-assign')
+var crc32 = require('crc32')
 var BASE = 58
 
 /**
@@ -115,7 +116,9 @@ EDID.prototype.validate = function(time, shard, counter, done) {
    @param {number} [opts.counter] Loopback counter.
    @param {id} [opts.parent] An EDID id (to extract shard number from it).
    @param {number} [opts.shard] A shard number.
+   @param {string} [opts.key] An string for generating shard number using CRC32.
    @param {callback} done
+
 */
 EDID.prototype.generate = function(opts, done) {
   if (!done) {
@@ -123,14 +126,15 @@ EDID.prototype.generate = function(opts, done) {
     opts = {}
   }
 
-  var self = this, parent = opts.parent, shard = opts.shard, counter = opts.counter, time = opts.time
-  if (!no(parent) && !no(shard)) return done(new Error('Both parent and shard are provided.'))
+  var self = this, shard = opts.shard, counter = opts.counter, time = opts.time
+  if ((opts.parent || opts.key) && shard) return done(new Error('Both parent/key and shard are provided.'))
   if (no(time)) time = timeFn()
   time -= this.epoch
   if (no(shard)) {
-    // get shard from parent id or generate new from current time
-    if (no(parent)) shard = time % this.shardCount
-    else shard = this.parse(parent).shard
+    // get shard from parent id or generate new from current time or key
+    if (opts.parent) shard = this.parse(opts.parent).shard
+    else if (opts.key) shard = Math.abs(parseInt(crc32(opts.key), 16)) % this.shardCount
+    else shard = time % this.shardCount
   }
   if (no(counter)) counter = this.nextCounter()
   

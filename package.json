@@ -10,6 +10,7 @@
   "dependencies": {
     "bases": "~0.2.1",
     "big-integer": "^1.6.3",
+    "crc32": "~0.2.2",
     "object-assign": "~4.0.1"
   },
   "devDependencies": {

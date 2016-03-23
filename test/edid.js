@@ -331,7 +331,15 @@ describe('EDID with timeLen=7 and custom epoch since 2015 (id length is 12, time
     edid.generate({parent: parentId}, function(err, id) {
       expect(id).length(12)
       expect(edid.parse(id)).property('shard', 1001)
-      compactAndRestore(edid, id, 57, done)
+      compactAndRestore(edid, id, 58, done)
+    })
+  })
+
+  it('should generate and parse id with a key', function(done) {
+    edid.generate({key: 'some key2'}, function(err, id) {
+      expect(id).length(12)
+      expect(edid.parse(id)).property('shard', 471)
+      compactAndRestore(edid, id, 58, done)
     })
   })
 
